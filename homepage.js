@@ -37,7 +37,6 @@ const gymEquipment = [
 let gymStoreContainer = document.querySelector('#store-main-container')
 
 // Cart Section
-// localStorage.setItem('cart', JSON.stringify([]))
 function loadCart() {
   if (localStorage.length === 0) {
     localStorage.setItem('cart', JSON.stringify([]))
@@ -48,83 +47,12 @@ function loadCart() {
 }
 let cart = loadCart()
 document.querySelector('#cart-amount').textContent = cart.length
-// Render The List
-function render(list) {
-  list.forEach((item) => {
-    // Create Equipment Container
-    let equipmentContainer = createElement('div', 'store-equipment-container')
-
-    //Create Image Container
-    let equipmentImageContainer = createElement(
-      'div',
-      'store-equipment-image-container'
-    )
-    //Create Image
-    let equipmentImage = document.createElement('img')
-    equipmentImage.classList.add('equipment-image')
-
-    equipmentImage.src = item.img
-    equipmentImage.alt = item.name
-    equipmentImageContainer.appendChild(equipmentImage)
-
-    //Create Equipment Information Container
-    let equipmentInformationContainer = createElement(
-      'div',
-      'store-equipment-information'
-    )
-
-    // Create Name Section
-    let equipmentName = createElement('h2', 'equipment-name')
-    equipmentName.textContent = item.name
-    // Create Price Section
-    let equipmentPrice = createElement('h3', 'equipment-price')
-    // Add to cart
-    let addToCartButton = createElement('button', 'add-to-cart')
-    addToCartButton.textContent = 'add to cart'
-    addToCartButton.name = item.name
-
-    // Merge All Together
-    equipmentPrice.textContent = `$${item.price}`
-    equipmentInformationContainer.appendChild(equipmentName)
-    equipmentInformationContainer.appendChild(equipmentPrice)
-    equipmentInformationContainer.appendChild(addToCartButton)
-
-    equipmentContainer.appendChild(equipmentImageContainer)
-    equipmentContainer.appendChild(equipmentInformationContainer)
-    gymStoreContainer.appendChild(equipmentContainer)
-  })
-  // add to cart
-  let addButtonArray = document.querySelectorAll('.add-to-cart')
-  addButtonArray.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      let buttonName = e.target.name
-      let item = list.find((item) => {
-        return item.name === buttonName
-      })
-      let itemCopy = { ...item }
-      itemCopy.id = randomId()
-      cart.push(itemCopy)
-      localStorage.setItem('cart', JSON.stringify(cart))
-      document.querySelector('#cart-amount').textContent = cart.length
-    })
-  })
-}
 
 // Search Elements
 let search = {
   searchInput: '',
   selectInput: '',
 }
-
-//Create Element
-function createElement(element, className) {
-  let newElement = document.createElement(element)
-  newElement.classList.add(className)
-  return newElement
-}
-
-// On Opening Website
-render(gymEquipment)
 
 // Search Filter
 document.querySelector('#text-search').addEventListener('input', (e) => {
@@ -179,6 +107,83 @@ document.querySelector('#select-order').addEventListener('change', (e) => {
   gymStoreContainer.innerHTML = ''
   render(selectList)
 })
+
+// Click to go to cart
+document.querySelector('#cart').addEventListener('click', () => {
+  window.location.href = '/cart.html'
+})
+
+// Render The List
+function render(list) {
+  list.forEach((item) => {
+    // Create Equipment Container
+    let equipmentContainer = createElement('div', 'store-equipment-container')
+
+    //Create Image Container
+    let equipmentImageContainer = createElement(
+      'div',
+      'store-equipment-image-container'
+    )
+    //Create Image
+    let equipmentImage = document.createElement('img')
+    equipmentImage.classList.add('equipment-image')
+
+    equipmentImage.src = item.img
+    equipmentImage.alt = item.name
+    equipmentImageContainer.appendChild(equipmentImage)
+
+    //Create Equipment Information Container
+    let equipmentInformationContainer = createElement(
+      'div',
+      'store-equipment-information'
+    )
+
+    // Create Name Section
+    let equipmentName = createElement('h2', 'equipment-name')
+    equipmentName.textContent = item.name
+    // Create Price Section
+    let equipmentPrice = createElement('h3', 'equipment-price')
+    equipmentPrice.textContent = `$${item.price}`
+    // Add to cart
+    let addToCartButton = createElement('button', 'add-to-cart')
+    addToCartButton.textContent = 'add to cart'
+    addToCartButton.name = item.name
+
+    // Merge All Together
+    equipmentInformationContainer.appendChild(equipmentName)
+    equipmentInformationContainer.appendChild(equipmentPrice)
+    equipmentInformationContainer.appendChild(addToCartButton)
+
+    equipmentContainer.appendChild(equipmentImageContainer)
+    equipmentContainer.appendChild(equipmentInformationContainer)
+    gymStoreContainer.appendChild(equipmentContainer)
+  })
+  // add to cart
+  let addButtonArray = document.querySelectorAll('.add-to-cart')
+  addButtonArray.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      let buttonName = e.target.name
+      let item = list.find((item) => {
+        return item.name === buttonName
+      })
+      let itemCopy = { ...item }
+      itemCopy.id = randomId()
+      cart.push(itemCopy)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      document.querySelector('#cart-amount').textContent = cart.length
+    })
+  })
+}
+
+//Create Element
+function createElement(element, className) {
+  let newElement = document.createElement(element)
+  newElement.classList.add(className)
+  return newElement
+}
+
+// On Opening Website
+render(gymEquipment)
 
 // random id
 function randomId() {

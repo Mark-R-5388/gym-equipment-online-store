@@ -12,3 +12,46 @@ body {
   height: 2rem;
 }
 /* Search Bar Area End */
+
+/* Cart Start */
+#cart {
+  position: relative;
+  width: 75px;
+  height: 75px;
+}
+#cart-amount {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.material-icons {
+  font-size: 2.5rem;
+}
+/* Cart End */
+
+/* Store Main Container Start */
+#store-main-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+/* Store Main Container End */
+
+/* Single Equipment Start */
+.store-equipment-container {
+  background: grey;
+  width: 250px;
+}
+.equipment-image {
+  width: 200px;
+  height: 200px;
+}
+/* Single Equipment End */

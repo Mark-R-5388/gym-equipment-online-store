@@ -32,9 +32,22 @@ const gymEquipment = [
     price: 50,
   },
 ]
+
 // Main Container
 let gymStoreContainer = document.querySelector('#store-main-container')
 
+// Cart Section
+// localStorage.setItem('cart', JSON.stringify([]))
+function loadCart() {
+  if (localStorage.length === 0) {
+    localStorage.setItem('cart', JSON.stringify([]))
+  }
+  let parsedCart = JSON.parse(localStorage.getItem('cart'))
+  let cart = parsedCart
+  return cart
+}
+let cart = loadCart()
+document.querySelector('#cart-amount').textContent = cart.length
 // Render The List
 function render(list) {
   list.forEach((item) => {
@@ -65,12 +78,35 @@ function render(list) {
     equipmentName.textContent = item.name
     // Create Price Section
     let equipmentPrice = createElement('h3', 'equipment-price')
+    // Add to cart
+    let addToCartButton = createElement('button', 'add-to-cart')
+    addToCartButton.textContent = 'add to cart'
+    addToCartButton.name = item.name
+
+    // Merge All Together
     equipmentPrice.textContent = `$${item.price}`
     equipmentInformationContainer.appendChild(equipmentName)
     equipmentInformationContainer.appendChild(equipmentPrice)
+    equipmentInformationContainer.appendChild(addToCartButton)
+
     equipmentContainer.appendChild(equipmentImageContainer)
     equipmentContainer.appendChild(equipmentInformationContainer)
     gymStoreContainer.appendChild(equipmentContainer)
+  })
+  // add to cart
+  let addButtonArray = document.querySelectorAll('.add-to-cart')
+  addButtonArray.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      let buttonName = e.target.name
+      let item = list.find((item) => {
+        return item.name === buttonName
+      })
+      let itemCopy = { ...item }
+      itemCopy.id = randomId()
+      cart.push(itemCopy)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      document.querySelector('#cart-amount').textContent = cart.length
+    })
   })
 }
 
@@ -140,8 +176,11 @@ document.querySelector('#select-order').addEventListener('change', (e) => {
 
     render(gymEquipment)
   }
-
   gymStoreContainer.innerHTML = ''
-
   render(selectList)
 })
+
+// random id
+function randomId() {
+  return Math.random().toString(16).substr(2, 16)
+}

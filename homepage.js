@@ -77,6 +77,7 @@ function render(list) {
 // Search Elements
 let search = {
   searchInput: '',
+  selectInput: '',
 }
 
 //Create Element
@@ -93,10 +94,54 @@ render(gymEquipment)
 document.querySelector('#text-search').addEventListener('input', (e) => {
   search.searchInput = e.target.value
   let filteredList = gymEquipment.filter((item) => {
-    if (item.name.includes(search.searchInput)) {
+    if (item.name.toLowerCase().includes(search.searchInput.toLowerCase())) {
       return item
     }
   })
+  if (filteredList.length === 0) {
+    gymStoreContainer.innerHTML = '<h1>Sorry.....no search results</h1>'
+  } else {
+    gymStoreContainer.innerHTML = ''
+    render(filteredList)
+  }
+})
+
+// Select Filter
+document.querySelector('#select-order').addEventListener('change', (e) => {
+  search.selectInput = e.target.value
+  let selectList = gymEquipment.map((item) => {
+    return item
+  })
+  console.log(selectList)
+  console.log(gymEquipment)
+  if (search.selectInput === 'price-high') {
+    selectList.sort((item1, item2) => {
+      return item2.price - item1.price
+    })
+  }
+  if (search.selectInput === 'price-low') {
+    selectList.sort((item1, item2) => {
+      return item1.price - item2.price
+    })
+  }
+  if (search.selectInput === 'alphabetical') {
+    selectList.sort((item1, item2) => {
+      if (item1.name < item2.name) {
+        return -1
+      } else if (item1.name > item2.name) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+  }
+  if (search.selectInput === 'base') {
+    gymStoreContainer.innerHTML = ''
+
+    render(gymEquipment)
+  }
+
   gymStoreContainer.innerHTML = ''
-  render(filteredList)
+
+  render(selectList)
 })

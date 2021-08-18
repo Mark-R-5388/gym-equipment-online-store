@@ -5,4 +5,10 @@ body {
   font-size: 2rem;
 }
 
-/*  */
+/* Search Bar Area Start */
+#text-search,
+#select-order {
+  font-size: 1.25rem;
+  height: 2rem;
+}
+/* Search Bar Area End */

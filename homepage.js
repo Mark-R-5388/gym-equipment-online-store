@@ -74,6 +74,11 @@ function render(list) {
   })
 }
 
+// Search Elements
+let search = {
+  searchInput: '',
+}
+
 //Create Element
 function createElement(element, className) {
   let newElement = document.createElement(element)
@@ -83,3 +88,15 @@ function createElement(element, className) {
 
 // On Opening Website
 render(gymEquipment)
+
+// Search Filter
+document.querySelector('#text-search').addEventListener('input', (e) => {
+  search.searchInput = e.target.value
+  let filteredList = gymEquipment.filter((item) => {
+    if (item.name.includes(search.searchInput)) {
+      return item
+    }
+  })
+  gymStoreContainer.innerHTML = ''
+  render(filteredList)
+})

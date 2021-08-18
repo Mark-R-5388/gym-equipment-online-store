@@ -38,14 +38,16 @@ let gymStoreContainer = document.querySelector('#store-main-container')
 
 // Cart Section
 function loadCart() {
-  if (localStorage.length === 0) {
-    localStorage.setItem('cart', JSON.stringify([]))
+  if (localStorage.length > 0) {
+    let parsedCart = JSON.parse(localStorage.getItem('cart'))
+    let cart = parsedCart
+    return cart
+  } else {
+    return []
   }
-  let parsedCart = JSON.parse(localStorage.getItem('cart'))
-  let cart = parsedCart
-  return cart
 }
 let cart = loadCart()
+console.log(cart)
 document.querySelector('#cart-amount').textContent = cart.length
 
 // Search Elements

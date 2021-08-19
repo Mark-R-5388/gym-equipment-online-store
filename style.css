@@ -55,3 +55,39 @@ body {
   height: 200px;
 }
 /* Single Equipment End */
+
+/* ************************************ */
+/* *********** Cart Page  ************* */
+/* ************************************ */
+#main-container {
+  width: 90%;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#cart-main-container {
+  background: blue;
+  width: 60%;
+  max-height: 80vh;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cart-equipment-container {
+  background: grey;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+#cost-container {
+  background: grey;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-self: flex-start;
+}

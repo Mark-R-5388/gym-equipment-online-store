@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
 
+:root {
+  --main-color: #fbc920;
+  --fonts: #1a2030;
+  --secondary-color: #1d5bfb;
+  --background-color: #eff1fa;
+}
+
 body {
   width: 100%;
   margin: 0;
@@ -7,6 +14,8 @@ body {
   box-sizing: border-box;
   font-family: 'Urbanist', sans-serif;
   text-transform: capitalize;
+  background: var(--background-color);
+  color: var(--fonts);
 }
 
 /* Universal Styles Start */
@@ -107,18 +116,11 @@ label {
 /* Search Bar Area End */
 
 /* Store Main Container Start */
-#homepage {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  width: 12rem;
-  height: 6rem;
-  margin: 0 auto 2rem auto;
-}
+
 #store-main-container {
-  border: 1px solid green;
+  background: var(--main-color);
+  box-shadow: 0px 8px 30px -2px black;
+
   padding: 2rem;
   width: 90%;
   margin: 0 auto 3rem auto;
@@ -131,7 +133,9 @@ label {
 
 /* Single Equipment Start */
 .store-equipment-container {
-  border: 1px solid black;
+  background: var(--secondary-color);
+  box-shadow: 0 8px 8px -2px black;
+
   width: 25rem;
   height: 50rem;
   display: flex;
@@ -148,6 +152,7 @@ label {
 }
 .equipment-image {
   position: absolute;
+  border: 2px solid var(--main-color);
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -171,6 +176,16 @@ label {
 /* ************************************ */
 /* *********** Cart Page  ************* */
 /* ************************************ */
+#homepage {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 12rem;
+  height: 6rem;
+  margin: 0 auto 2rem auto;
+}
 #main-container {
   width: 90%;
   border: 1px solid black;

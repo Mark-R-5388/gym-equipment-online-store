@@ -17,11 +17,11 @@ function render(list) {
     //Create Image Container
     let equipmentImageContainer = createElement(
       'div',
-      'store-equipment-image-container'
+      'cart-equipment-image-container'
     )
     //Create Image
     let equipmentImage = document.createElement('img')
-    equipmentImage.classList.add('equipment-image')
+    equipmentImage.classList.add('cart-image')
 
     equipmentImage.src = item.img
     equipmentImage.alt = item.name
@@ -30,14 +30,14 @@ function render(list) {
     //Create Equipment Information Container
     let equipmentInformationContainer = createElement(
       'div',
-      'store-equipment-information'
+      'cart-equipment-information'
     )
 
     // Create Name Section
-    let equipmentName = createElement('h2', 'equipment-name')
+    let equipmentName = createElement('h2', 'cart-equipment-name')
     equipmentName.textContent = item.name
     // Create Price Section
-    let equipmentPrice = createElement('h3', 'equipment-price')
+    let equipmentPrice = createElement('h3', 'cart-equipment-price')
     equipmentPrice.textContent = `$${item.price}`
     // create delete button
     let deleteButton = createElement('button', 'delete-item')
@@ -69,7 +69,11 @@ function render(list) {
     })
   })
   if (cart.length === 0) {
-    cartContainer.innerHTML = '<h1>Cart is Empty</h1>'
+    cartContainer.innerHTML = ''
+    let cartEmptyEl = createElement('h1', 'empty-cart-text')
+    cartEmptyEl.textContent = 'Cart is Empty'
+    cartContainer.append(cartEmptyEl)
+    costContainer.remove()
   }
 }
 

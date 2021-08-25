@@ -14,36 +14,46 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Welcome to the shop!</h1>
+    <h1 class="page-title">One Stop Equipment Shop</h1>
     <!-- Search Section Start -->
     <!-- Input Search Start -->
-    <label for="text-search"
-      >Search:
-      <input
-        type="text"
-        name="text-search"
-        id="text-search"
-        placeholder="search store"
-      />
-    </label>
-    <!-- Input Search End -->
+    <div class="search-and-cart-container">
+      <div class="search-input">
+        <label class="label" for="text-search">
+          Search:
 
-    <!-- Input Select Start -->
-    <label for="select-order">Display Order: </label>
-    <select name="select-order" id="select-order">
-      <option value="base">Select Order</option>
-      <option value="price-high">Price-High to Low</option>
-      <option value="price-low">Price- Low to High</option>
-      <option value="alphabetical">Alphabetical</option>
-    </select>
-    <!-- Input Select End -->
+          <input
+            type="text"
+            name="text-search"
+            id="text-search"
+            placeholder="search store"
+          />
+        </label>
+      </div>
+      <!-- Input Search End -->
 
-    <!-- Cart Start -->
-    <button id="cart">
-      <div id="cart-amount">0</div>
-      <span class="material-icons"> shopping_cart </span>
-    </button>
-    <!-- Cart End -->
+      <!-- Input Select Start -->
+      <div class="order-input">
+        <label class="label" for="select-order"
+          >Display:
+          <select name="select-order" id="select-order">
+            <option value="base">Select Order</option>
+            <option value="price-high">Price-High to Low</option>
+            <option value="price-low">Price- Low to High</option>
+            <option value="alphabetical">Alphabetical</option>
+          </select>
+        </label>
+      </div>
+      <!-- Input Select End -->
+
+      <!-- Cart Start -->
+      <button id="cart">
+        <div id="cart-amount">0</div>
+        <span class="material-icons"> shopping_cart </span>
+      </button>
+      <!-- Cart End -->
+    </div>
+
     <!-- Search Section End -->
 
     <!-- Gym Equipment Section Start -->

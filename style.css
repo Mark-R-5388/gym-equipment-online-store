@@ -1,30 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+
 body {
+  width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Urbanist', sans-serif;
+  text-transform: capitalize;
+}
+
+/* Universal Styles Start */
+h1 {
+  font-size: 6rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
   font-size: 2rem;
 }
+p {
+  font-size: 1.5rem;
+}
+label {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Universal Styles End */
+
+/* Page Title Start */
+.page-title {
+  text-align: center;
+}
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 425px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+}
+/* Page Title End */
 
 /* Search Bar Area Start */
+.search-and-cart-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input,
+.order-input {
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #text-search,
 #select-order {
-  font-size: 1.25rem;
-  height: 2rem;
+  border: 1px solid black;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+  width: 15rem;
 }
-/* Search Bar Area End */
-
 /* Cart Start */
 #cart {
   position: relative;
-  width: 75px;
-  height: 75px;
+  width: 10em;
+  height: 10em;
+  border: none;
+  background: transparent;
+  outline: none;
 }
 #cart-amount {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
+  top: 0.75em;
+  right: 1em;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
   border-radius: 50%;
   background: white;
   display: flex;
@@ -32,27 +99,62 @@ body {
   align-items: center;
 }
 .material-icons {
-  font-size: 2.5rem;
+  cursor: pointer;
+  font-size: 6em;
 }
 /* Cart End */
 
+/* Search Bar Area End */
+
 /* Store Main Container Start */
 #store-main-container {
+  border: 1px solid green;
+  padding: 2rem;
   width: 90%;
+  margin: 0 auto 3rem auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 /* Store Main Container End */
 
 /* Single Equipment Start */
 .store-equipment-container {
-  background: grey;
-  width: 250px;
+  border: 1px solid black;
+  width: 25rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+.store-equipment-image-container {
+  position: relative;
+  width: 90%;
+  height: 60%;
 }
 .equipment-image {
-  width: 200px;
-  height: 200px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.store-equipment-information {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+.add-to-cart {
+  width: 10rem;
+  height: 4rem;
+  font-size: 1.5rem;
 }
 /* Single Equipment End */
 
@@ -90,4 +192,74 @@ body {
   justify-content: space-around;
   align-items: center;
   align-self: flex-start;
+}
+
+@media (max-width: 1240px) {
+  .search-and-cart-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .search-input,
+  .order-input {
+    order: 2;
+    margin-bottom: 1.5rem;
+  }
+  #cart {
+    order: 1;
+    margin-bottom: 1.5rem;
+  }
+}
+@media (max-width: 550px) {
+  .search-and-cart-container {
+    border: none;
+    margin-right: 0;
+    width: 100%;
+  }
+  .search-input,
+  .order-input {
+    width: 20rem;
+    flex-wrap: wrap;
+  }
+  .label {
+    font-size: 2rem;
+  }
+  #text-search,
+  #select-order {
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+}
+@media (max-width: 425px) {
+  #cart {
+    width: 8em;
+    height: 8em;
+  }
+  #cart-amount {
+    top: 0.5em;
+    right: 0.75em;
+    width: 32px;
+    height: 32px;
+    font-size: 1.25em;
+  }
+  .material-icons {
+    font-size: 5em;
+  }
+}
+@media (max-width: 1500px) {
+  .store-equipment-container {
+    width: 20rem;
+  }
+}
+@media (max-width: 840px) {
+  #store-main-container {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 2rem 0 2rem 0;
+    justify-content: center;
+  }
+  .store-equipment-container {
+    width: 90%;
+  }
 }

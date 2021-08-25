@@ -47,7 +47,7 @@ function loadCart() {
   }
 }
 let cart = loadCart()
-console.log(cart)
+
 document.querySelector('#cart-amount').textContent = cart.length
 
 // Search Elements

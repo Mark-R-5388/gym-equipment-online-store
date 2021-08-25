@@ -91,26 +91,29 @@ function renderCost(list) {
   textContainer.appendChild(totalText)
 
   // Create Math Container
-  let mathContainer = createElement('div', 'math-container')
-  let cartTotalMath = document.createElement('p')
+  if (list.length != 0) {
+    let mathContainer = createElement('div', 'math-container')
+    let cartTotalMath = document.createElement('p')
 
-  cartTotalMath.textContent = '$' + findCartTotal(list)
-  let taxMath = document.createElement('p')
-  taxMath.textContent = `$` + findTaxTotal(findCartTotal(list))
-  let shippingMath = document.createElement('p')
-  shippingMath.textContent = `$15.00`
-  let totalMath = document.createElement('p')
-  totalMath.textContent =
-    `$` + findTotal(findCartTotal(list), findTaxTotal(findCartTotal(list)))
+    cartTotalMath.textContent = '$' + findCartTotal(list)
+    let taxMath = document.createElement('p')
+    taxMath.textContent = `$` + findTaxTotal(findCartTotal(list))
+    let shippingMath = document.createElement('p')
+    shippingMath.textContent = `$15.00`
+    let totalMath = document.createElement('p')
+    totalMath.textContent =
+      `$` + findTotal(findCartTotal(list), findTaxTotal(findCartTotal(list)))
 
-  mathContainer.appendChild(cartTotalMath)
-  mathContainer.appendChild(taxMath)
-  mathContainer.appendChild(shippingMath)
-  mathContainer.appendChild(totalMath)
+    mathContainer.appendChild(cartTotalMath)
+    mathContainer.appendChild(taxMath)
+    mathContainer.appendChild(shippingMath)
+    mathContainer.appendChild(totalMath)
 
-  costContainer.appendChild(textContainer)
-  costContainer.appendChild(mathContainer)
-  findCartTotal(list)
+    costContainer.appendChild(textContainer)
+    costContainer.appendChild(mathContainer)
+
+    findCartTotal(list)
+  }
 }
 
 render(cart)
@@ -120,7 +123,6 @@ renderCost(cart)
 function findCartTotal(list) {
   let cartCostArray = list.map((item) => item.price)
   let cartCost = cartCostArray.reduce((item1, item2) => item1 + item2)
-
   return parseInt(cartCost).toFixed(2)
 }
 

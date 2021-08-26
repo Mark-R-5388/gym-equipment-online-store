@@ -37,6 +37,16 @@ label {
   justify-content: center;
   align-items: center;
 }
+.button:hover {
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.button:active {
+  background: #a0a0a0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
 /* Universal Styles End */
 
 /* Page Title Start */
@@ -120,7 +130,6 @@ label {
 #store-main-container {
   background: var(--main-color);
   box-shadow: 0px 8px 30px -2px black;
-
   padding: 2rem;
   width: 90%;
   margin: 0 auto 3rem auto;
@@ -187,9 +196,12 @@ label {
   margin: 0 auto 2rem auto;
 }
 #main-container {
+  background: var(--main-color);
+  box-shadow: 0px 8px 30px -2px black;
+
   width: 90%;
   border: 1px solid black;
-  margin: 0 auto;
+  margin: 0 auto 3rem auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -204,6 +216,9 @@ label {
   justify-content: space-between;
 }
 .cart-equipment-container {
+  background: var(--secondary-color);
+  box-shadow: 0 8px 8px -2px black;
+
   border: 1px solid black;
   width: 100%;
   height: 25rem;
@@ -220,6 +235,7 @@ label {
   height: 80%;
 }
 .cart-image {
+  border: 2px solid var(--main-color);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -235,6 +251,8 @@ label {
   align-items: center;
 }
 #cost-container {
+  background: var(--secondary-color);
+
   margin-top: 1rem;
   border: 1px solid black;
   width: 30%;

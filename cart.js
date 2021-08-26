@@ -41,6 +41,7 @@ function render(list) {
     equipmentPrice.textContent = `$${item.price}`
     // create delete button
     let deleteButton = createElement('button', 'delete-item')
+    deleteButton.classList.add('button')
     deleteButton.textContent = 'delete'
     deleteButton.name = item.id
 
@@ -69,6 +70,7 @@ function render(list) {
     })
   })
   if (cart.length === 0) {
+    cartContainer.style.overflow = 'hidden'
     cartContainer.innerHTML = ''
     let cartEmptyEl = createElement('h1', 'empty-cart-text')
     cartEmptyEl.textContent = 'Cart is Empty'

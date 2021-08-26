@@ -148,6 +148,7 @@ function render(list) {
     equipmentPrice.textContent = `$${item.price}`
     // Add to cart
     let addToCartButton = createElement('button', 'add-to-cart')
+    addToCartButton.classList.add('button')
     addToCartButton.textContent = 'add to cart'
     addToCartButton.name = item.name
 

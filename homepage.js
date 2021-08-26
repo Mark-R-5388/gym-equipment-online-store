@@ -78,8 +78,6 @@ document.querySelector('#select-order').addEventListener('change', (e) => {
   let selectList = gymEquipment.map((item) => {
     return item
   })
-  console.log(selectList)
-  console.log(gymEquipment)
   if (search.selectInput === 'price-high') {
     selectList.sort((item1, item2) => {
       return item2.price - item1.price
